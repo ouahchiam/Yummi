@@ -7,6 +7,8 @@
 
 import Foundation
 
-enum Categories {
-    case Food
+enum Categories: String {
+    case Food = "Food"
+    case Equipment = "Equipment"
+    case Liquid = "Liquid"
 }

@@ -16,6 +16,7 @@
 		BD23F4EA2B5FECD600FD7F4C /* YummiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23F4E92B5FECD600FD7F4C /* YummiUITestsLaunchTests.swift */; };
 		BD23F4F82B5FEF7500FD7F4C /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23F4F72B5FEF7500FD7F4C /* Ingredients.swift */; };
 		BD23F4FA2B5FF3F600FD7F4C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23F4F92B5FF3F600FD7F4C /* Enums.swift */; };
+		BD75345B2B692CFE0055566A /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75345A2B692CFE0055566A /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		BD23F4E92B5FECD600FD7F4C /* YummiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BD23F4F72B5FEF7500FD7F4C /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		BD23F4F92B5FF3F600FD7F4C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		BD75345A2B692CFE0055566A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				BD23F4F72B5FEF7500FD7F4C /* Ingredients.swift */,
 				BD23F4F92B5FF3F600FD7F4C /* Enums.swift */,
+				BD75345A2B692CFE0055566A /* Recipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				BD23F4F82B5FEF7500FD7F4C /* Ingredients.swift in Sources */,
 				BD23F4FA2B5FF3F600FD7F4C /* Enums.swift in Sources */,
 				BD23F4CD2B5FECD200FD7F4C /* YummiApp.swift in Sources */,
+				BD75345B2B692CFE0055566A /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
