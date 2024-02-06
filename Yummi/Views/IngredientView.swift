@@ -39,7 +39,8 @@ struct IngredientView: View {
                 Section("New Ingredient") {
                     TextField("Ingredient Name", text: $ingredientName);
                     HStack {
-                        TextField("Quantity", value: $quantity, formatter: NumberFormatter());
+                        TextField("Quantity", value: $quantity, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                         TextField("Unit", text: $unit);
                     }
                     HStack {
@@ -60,12 +61,12 @@ struct IngredientView: View {
                     }
                 }
             }
-        
             
-        
         .padding()
     }
+    
 }
+
 
 #Preview {
     IngredientView()

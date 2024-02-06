@@ -8,33 +8,84 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var ingredientName: String = ""
-    @State private var quantity: Int = Int()
-    @State private var unit: String = ""
+    @State private var isSideBarOpened = false
     
     var body: some View {
-        let Flour = Ingredients(name: "Flour", quantity: 500, unit: "g", category: "Food", expiryDate: Date(timeIntervalSince1970: 86400 * 365.25 * 100))
-
-            Form {
-                Section {
-                    Text("Name: \(Flour.name)")
-                    Text("Quantity: \(Flour.quantity)\(Flour.unit)")
-                    Text("Category: \(Flour.category)")
-                    Text("Expiry date: \(Flour.expiryDate.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
-                    
+        ZStack {
+            NavigationStack {
+                List(Recipes, id: \.name) { recipe in
+                    NavigationLink("\(recipe.name)") {
+                        VStack {
+                            Text("\(recipe.name)")
+                                .dynamicTypeSize(.xxLarge)
+                                .fontWeight(.bold)
+                            Text("\(recipe.descriptor)")
+                                .dynamicTypeSize(.medium)
+                                .fontWeight(.medium)
+                                .padding()
+                            
+                            Form {
+                                Section ("Ingredients") {
+                                    VStack {
+                                        ForEach(recipe.Ingredients,id: \.name) { ingredient in
+                                            if (ingredient.category != Category.equipment) {
+                                                VStack {
+                                                    Text("\(ingredient.quantity) \(ingredient.unit)")
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+                        
+                    }
                 }
-                Section("New") {
-                    Text("Make a new ingredient");
-                    TextField("Ingredient Name", text: $ingredientName);
-                    TextField("Quantity", value: $quantity, formatter: NumberFormatter());
-                    TextField("Unit", text: $unit);
-                    ("Category", text: $unit);
+                .navigationTitle("Recipes")
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Image(systemName: "person.crop.circle")
+                    }
+                    
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            isSideBarOpened.toggle()
+                        } label: {
+                            Image(systemName: "line.3.horizontal")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            // action
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            // action
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
+                    
+                    
+                    ToolbarItem(placement: .status) {
+                        Button {
+                            
+                        } label: {
+                            Text("Create recipe")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.extraLarge)
+                    }
                 }
             }
-        
-            
-        
-        .padding()
+            Sidebar(isSidebarVisible: $isSideBarOpened)
+        }
     }
 }
 

@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct Ingredients {
+struct Ingredient {
     let name: String
     let quantity: Int
     let unit: String
-    let category: String
+    let category: Category
     let expiryDate: Date
 }
+
+var IngredientsArray = [Ingredient(name: "Flour", quantity: 500, unit: "g", category: Category.carbohydrate, expiryDate: Date(timeIntervalSince1970: 86400 * 365.25 * 100))]

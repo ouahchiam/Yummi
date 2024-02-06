@@ -8,11 +8,54 @@
 import SwiftUI
 
 struct Sidebar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+    @Binding var isSidebarVisible: Bool
+    var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
+        var bgColor: Color =
+    Color(.white)
+
+        var body: some View {
+            ZStack {
+                GeometryReader { _ in
+                    EmptyView()
+                }
+                .background(.black.opacity(0.6))
+                .opacity(isSidebarVisible ? 1 : 0)
+                .animation(.easeInOut.delay(0.2), value: isSidebarVisible)
+                .onTapGesture {
+                    isSidebarVisible.toggle()
+                }
+                content
+            }
+            .edgesIgnoringSafeArea(.all)
+        }
+
+        var content: some View {
+            HStack(alignment: .top) {
+                ZStack(alignment: .center) {
+                    bgColor
+                    VStack {
+                        Button {
+                            
+                        } label: {
+                            Text("Ingredient")
+                        }
+                            .padding()
+                        Button("Ingredients", action: {})
+                            .padding()
+                    }
+                }
+                .frame(width: sideBarWidth)
+                .offset(x: isSidebarVisible ? 0 : -sideBarWidth)
+                .animation(.default, value: isSidebarVisible)
+
+                Spacer()
+            }
+        }
 }
 
 #Preview {
-    Sidebar()
+    ContentView()
 }
+
+
+

@@ -7,8 +7,6 @@
 
 import Foundation
 
-enum Categories: String {
-    case Food = "Food"
-    case Equipment = "Equipment"
-    case Liquid = "Liquid"
+enum Category: String, CaseIterable {
+    case equipment, carbohydrate, protein, liquid, vegetables, fruits
 }
