@@ -28,12 +28,21 @@ struct ContentView: View {
                                 Section ("Ingredients") {
                                     VStack {
                                         ForEach(recipe.Ingredients,id: \.name) { ingredient in
-                                            if (ingredient.category != Category.equipment) {
-                                                VStack {
+                                            if (FoodCategories.contains(ingredient.category)) {
+                                                VStack(alignment: .leading) {
                                                     Text("\(ingredient.quantity) \(ingredient.unit)")
+                                                    Text("Expiry date: \(ingredient.expiryDate.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
                                                 }
                                             }
                                         }
+
+                                    }
+                                }
+                                Section ("Instructions") {
+                                    VStack(alignment: .leading) {
+                                        ForEach(0..<recipe.Instructions.count, id: \.self) { index in
+                                            Text("\(index+1). \(recipe.Instructions[index])")
+                                            }
                                     }
                                 }
                             }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+let FoodCategories: [Category] = [.carbohydrate, .protein, .vegetables, .fruits, .grains]
+
 enum Category: String, CaseIterable {
-    case equipment, carbohydrate, protein, liquid, vegetables, fruits
+    case equipment, carbohydrate, protein, liquid, vegetables, fruits, grains
 }
