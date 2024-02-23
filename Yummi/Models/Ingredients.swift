@@ -12,7 +12,11 @@ struct Ingredient {
     let quantity: Int
     let unit: String
     let category: Category
+}
+
+struct RecipeIngredient {
+    let ingredient: Ingredient
     let expiryDate: Date
 }
 
-var IngredientsArray = [Ingredient(name: "Flour", quantity: 500, unit: "g", category: Category.carbohydrate, expiryDate: Date(timeIntervalSince1970: 86400 * 365.25 * 100))]
+var IngredientsArray = [RecipeIngredient(ingredient: Ingredient(name: "Flour", quantity: 500, unit: "g", category: Category.carbohydrate), expiryDate: Date(timeIntervalSince1970: 86400 * 365.25 * 100))]

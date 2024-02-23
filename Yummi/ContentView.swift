@@ -16,21 +16,21 @@ struct ContentView: View {
                 List(Recipes, id: \.name) { recipe in
                     NavigationLink("\(recipe.name)") {
                         VStack {
-                            Text("\(recipe.name)")
-                                .dynamicTypeSize(.xxLarge)
-                                .fontWeight(.bold)
-                            Text("\(recipe.descriptor)")
-                                .dynamicTypeSize(.medium)
-                                .fontWeight(.medium)
-                                .padding()
-                            
                             Form {
+                                Section(recipe.descriptor) {
+                                    AsyncImage(url: URL(string: recipe.image)) { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit) // or .fill
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                }
                                 Section ("Ingredients") {
                                     VStack {
                                         ForEach(recipe.Ingredients,id: \.name) { ingredient in
-                                            if (FoodCategories.contains(ingredient.category)) {
+                                            if (FoodCategories.contains(ingredient.ingredient.category)) {
                                                 VStack(alignment: .leading) {
-                                                    Text("\(ingredient.quantity) \(ingredient.unit)")
+                                                    Text("\(ingredient.ingredient.quantity) \(ingredient.ingredient.unit)")
                                                     Text("Expiry date: \(ingredient.expiryDate.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
                                                 }
                                             }
@@ -46,10 +46,10 @@ struct ContentView: View {
                                     }
                                 }
                             }
-                            Spacer()
                         }
-                        
+                        .navigationTitle(recipe.name)
                     }
+                    
                 }
                 .navigationTitle("Recipes")
                 .toolbar {
