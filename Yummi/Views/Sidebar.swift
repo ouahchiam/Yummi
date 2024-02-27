@@ -37,7 +37,7 @@ struct Sidebar: View {
                         Button {
                             
                         } label: {
-                            Text("Ingredient")
+                            Text("Recipe")
                         }
                             .padding()
                         Button("Ingredients", action: {})

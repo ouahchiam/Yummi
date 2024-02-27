@@ -30,7 +30,7 @@ struct IngredientView: View {
                     Text("Name: \(currentIngredient.name)")
                     Text("Quantity: \(currentIngredient.quantity) \(currentIngredient.unit)")
                     Text("Category: \(currentIngredient.category.rawValue.capitalized)")
-                    Text("Expiry date: \(currentIngredient.expiryDate.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
+                    Text("Expiry date: \(currentIngredient.expiryDate!.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
                     Button("Next ingredient", action: {
                         currentIngredientCount += 1
                     })

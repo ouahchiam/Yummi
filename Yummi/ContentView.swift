@@ -28,11 +28,17 @@ struct ContentView: View {
                                 Section ("Ingredients") {
                                     VStack {
                                         ForEach(recipe.Ingredients,id: \.name) { ingredient in
-                                            if (FoodCategories.contains(ingredient.ingredient.category)) {
+                                            if (FoodCategories.contains(ingredient.category)) {
                                                 VStack(alignment: .leading) {
-                                                    Text("\(ingredient.ingredient.quantity) \(ingredient.ingredient.unit)")
-                                                    Text("Expiry date: \(ingredient.expiryDate.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
+                                                    Text("\(ingredient.name)")
+                                                    Text("\(ingredient.quantity) \(ingredient.unit)")
+                                                    if (!ingredient.isInventory) {
+                                                        if let date = ingredient.expiryDate {
+                                                            Text("Expiry date: \(date.formatted(date: Date.FormatStyle.DateStyle.numeric, time: Date.FormatStyle.TimeStyle.shortened))")
+                                                        }
+                                                    }
                                                 }
+                                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                                             }
                                         }
 
@@ -53,17 +59,6 @@ struct ContentView: View {
                 }
                 .navigationTitle("Recipes")
                 .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Image(systemName: "person.crop.circle")
-                    }
-                    
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            isSideBarOpened.toggle()
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
-                        }
-                    }
                     
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
@@ -73,20 +68,12 @@ struct ContentView: View {
                         }
                     }
                     
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            // action
-                        } label: {
-                            Image(systemName: "square.and.arrow.up")
-                        }
-                    }
-                    
                     
                     ToolbarItem(placement: .status) {
                         Button {
                             
                         } label: {
-                            Text("Create recipe")
+                            Text("Switch to ")
                         }
                         .buttonStyle(.borderedProminent)
                         .controlSize(.extraLarge)
